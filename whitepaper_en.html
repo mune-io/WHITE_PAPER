@@ -1,50 +1,186 @@
-<!-- WHITEPAPER — English version -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Whitepaper — Decentralized Taxi & Advertising Network</title>
-  <style>body{font-family:Inter,sans-serif;background:#0b0c10;color:#eaeaea;line-height:1.6;padding:40px;max-width:900px;margin:auto}h1,h2,h3{color:#00bcd4}h1{font-size:28px}h2{font-size:22px;margin-top:40px}.toc{background:#121417;padding:20px;border-radius:10px}.toc li{margin:8px 0}</style>
+  <title>Whitepaper — Taxi Screens & Decentralized Taxi Ecosystem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3, h4 {
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .toc li {
+      margin-bottom: 8px;
+    }
+    .whitepaper-links a {
+      display: block;
+      background: #3366cc;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 5px 0;
+      text-align: center;
+    }
+    .screenshot {
+      width: 100%;
+      max-width: 600px;
+      margin: 15px 0;
+    }
+    .status {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Whitepaper — Decentralized Taxi & Advertising Network</h1>
-  <p><strong>Version:</strong> 1.0 — October 2025</p>
+  <div class="container">
+    <h1>Whitepaper: Taxi Advertising Screens & Decentralized Taxi Ecosystem</h1>
+    <p><strong>Version 1.0 — October 2025</strong> — Brief project overview and technical roadmap</p>
 
-  <div class="toc">
-    <h3>Contents</h3>
-    <ol>
-      <li>Taxi Advertising System — <em>Completed</em></li>
-      <li>Decentralized Taxi App (Web3Taxi) — <em>In Progress</em></li>
-      <li>Offline Network — Meshtastic (LoRa) — <em>Planned</em></li>
-      <li>Internal Payment System — <em>Planned</em></li>
+    <h2>Table of Contents</h2>
+    <ul class="toc">
+      <li>1. Taxi Advertising Screens — Implemented ✅</li>
+      <li>2. Decentralized Taxi Application (Web3Taxi) — In Progress ⚙️</li>
+      <li>3. Offline Network — Meshtastic (LoRa) — Planned 🔄</li>
+      <li>4. Internal Payment System — Planned 🔄</li>
       <li>Conclusion & Disclaimer</li>
-    </ol>
-  </div>
+    </ul>
 
-  <h2>1. Taxi Advertising System</h2>
-  <p><strong>Status:</strong> Completed ✅</p>
-  <p>A digital advertising network with tablets installed in taxis. Each screen can also serve as a computing node for distributed processing in the Web3Taxi system.</p>
-
-  <h2>2. Decentralized Taxi App (Web3Taxi)</h2>
-  <p><strong>Status:</strong> In Progress ⚙️</p>
-  <p>A peer-to-peer system where ride processing occurs directly on devices — tablets, mobile phones, or mini-servers.</p>
+    <div class="card">
+  <h2>1. Taxi Advertising Screens</h2>
+  <p class="status">Status: Implemented ✅</p>
+  <p>We have deployed a network of digital advertising screens across taxi fleets. The devices serve several key purposes:</p>
   <ul>
-    <li><strong>libp2p + WebRTC</strong> — peer-to-peer communication</li>
-    <li><strong>Redis / Gossip</strong> — state synchronization</li>
-    <li><strong>DID</strong> — decentralized identification</li>
-    <li><strong>Python / Go / React Native</strong> — implementation across devices</li>
+    <li><strong>Advertising platform</strong> — displaying targeted ads and content based on location, time of day, and passenger profile.</li>
+    <li><strong>Technological backbone</strong> — tablets act as fully functional computing nodes (Android ARM), capable of future integration into a decentralized network.</li>
+    <li><strong>Local Face Recognition</strong> — a neural network running entirely on the tablet detects passenger attention and counts ad views. No personal data leaves the device, ensuring compliance with <strong>RODO/GDPR</strong>.</li>
+    <li><strong>Data privacy</strong> — all processing is local; only anonymized statistics (ad view counts, engagement metrics) are sent to the server.</li>
   </ul>
-  <div style="margin-top:12px;text-align:center;"><img src="screen.jpg" alt="screenshot" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1)"></div>
+  <p>This system allows both monetization through ads and preparation for a scalable Web3Taxi ecosystem, with full respect for user privacy.</p>
+</div>
 
-  <h2>3. Offline Network (Meshtastic / LoRa)</h2>
-  <p><strong>Status:</strong> Planned 🔄</p>
-  <p>Using Meshtastic mesh networking enables offline communication without internet or telecom operators, covering entire cities through LoRa connectivity.</p>
 
-  <h2>4. Internal Payment System</h2>
-  <p><strong>Status:</strong> Planned 🔄</p>
-  <p>Introducing a tokenized economy for transactions between drivers, passengers, and advertisers, built on Polygon or Base blockchain.</p>
+    <div class="card">
+      <h2>2. Decentralized Taxi Application</h2>
+      <p class="status">Status: In Progress ⚙️</p>
+      <h3>Core Idea</h3>
+      <p>Instead of a single centralized server, we are building a system where computation (ride-matching, route calculation, driver filtering) is performed on <strong>distributed nodes</strong>:</p>
+      <ul>
+        <li>Advertising tablets in taxis,</li>
+        <li>Stationary mini-servers (Raspberry Pi),</li>
+        <li>Smartphones of drivers and passengers.</li>
+      </ul>
 
-  <h2>Conclusion & Disclaimer</h2>
-  <p>This ecosystem merges transportation, advertising, and computation into one decentralized network. All calculations are indicative and not investment advice.</p>
+      <h3>Workflow Overview</h3>
+      <ol>
+        <li>Passenger places a ride request in the app.</li>
+        <li>A lightweight <strong>Coordinator Server</strong> broadcasts the task to the P2P network.</li>
+        <li>Nearby nodes calculate optimal routes and available drivers.</li>
+        <li>Results are sent directly to the passenger; the Coordinator only logs key events.</li>
+      </ol>
+
+      <h3>Technical Stack</h3>
+      <ul>
+        <li><strong>libp2p + WebRTC</strong> — P2P device communication</li>
+        <li><strong>Redis / Gossip protocol</strong> — distributed state synchronization</li>
+        <li><strong>DID (Decentralized IDs)</strong> — identity management</li>
+        <li><strong>Python / Go / React Native</strong> — node and coordinator implementation</li>
+      </ul>
+
+      <img src="screenshot.jpg" alt="screenshot" class="screenshot">
+
+      <h3>Efficiency Example (Illustrative)</h3>
+      <p>Traditional centralized servers for 10,000 rides/day may require <strong>16 vCPU / 32 GB RAM</strong>. Our network of 200 tablets, donating 10–15% CPU each, can provide ~40 vCPU without additional server costs. This leads to <strong>substantial infrastructure cost reduction (~95%)</strong>.</p>
+      <p><em>Note: Estimates are illustrative and not investment advice.</em></p>
+
+      <h3>Additional Notes</h3>
+      <ul>
+        <li>Nodes update location every 2–3 minutes to keep ride-matching accurate.</li>
+        <li>Passengers and drivers communicate P2P after ride confirmation, minimizing server load.</li>
+        <li>Coordinator only handles essential events (ride acceptance, cancellation, arrival, completion).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>3. Offline Network — Meshtastic (LoRa)</h2>
+      <p class="status">Status: Planned 🔄</p>
+      <h3>What is Meshtastic?</h3>
+      <p>Meshtastic implements a <strong>mesh network</strong> using <strong>LoRa technology</strong> (not LoRaWAN). Devices relay messages to each other, forming a chain that extends the network coverage.</p>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>Every node retransmits messages, extending coverage.</li>
+        <li>Typical range per node: 2–5 km in cities, 10–15 km in open areas.</li>
+        <li>Fully functional city-wide coverage possible with hundreds of nodes, <strong>without internet</strong>.</li>
+      </ul>
+
+      <h3>Advantages</h3>
+      <ul>
+        <li>Operates in emergency conditions.</li>
+        <li>No mobile data costs.</li>
+        <li>Low energy consumption for LoRa devices.</li>
+      </ul>
+
+      <p><em>Note: Calculations are approximate and not investment advice.</em></p>
+    </div>
+
+    <div class="card">
+      <h2>4. Internal Payment System</h2>
+      <p class="status">Status: Planned 🔄</p>
+      <p>The plan for an internal tokenized payment layer includes:</p>
+      <ul>
+        <li>Settlements between drivers, passengers, and advertisers.</li>
+        <li>Advertisement payments via tokens (e.g., MUN).</li>
+        <li>Smart contracts for automated payouts and accounting.</li>
+        <li>Reward programs for resource sharing (computing power, message relays).</li>
+      </ul>
+      <p><strong>Preferred blockchain solutions:</strong> Polygon or Base, for low fees and dApp compatibility.</p>
+    </div>
+
+    <div class="card">
+      <h2>Conclusion</h2>
+      <p>This project aims to create a <strong>new type of urban infrastructure</strong>, where advertising screens also serve as distributed computing nodes.</p>
+      <ul>
+        <li>Network resilience independent of mobile operators</li>
+        <li>Reduced infrastructure costs</li>
+        <li>Fair revenue distribution among participants</li>
+      </ul>
+      <p><strong>Disclaimer:</strong> This document is for informational purposes. Data and calculations are estimates and do not constitute investment advice.</p>
+    </div>
+
+    <div class="card whitepaper-links">
+     
+    </div>
+
+  </div>
 </body>
 </html>
