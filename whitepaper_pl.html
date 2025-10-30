@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Whitepaper — Sieć monitorów i zdecentralizowany ekosystem taksówek</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#6ee7b7;
+      --muted:#9aa6b2;
+      --text:#e6eef3;
+      --maxw:900px;
+      font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071021 0%, var(--bg) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{max-width:var(--maxw);width:100%;}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#34d399);display:flex;align-items:center;justify-content:center;font-weight:700;color:#022;box-shadow:0 6px 18px rgba(0,0,0,0.6);}
+    h1{margin:0;font-size:22px;}
+    p.lead{margin:6px 0 0;color:var(--muted);}
+    nav.toc{margin:18px 0;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;font-size:14px;}
+    nav.toc strong{display:block;margin-bottom:6px;color:var(--accent);}
+    nav.toc ul{margin:8px 0 0 18px;list-style:none;padding:0;}
+    nav.toc li{margin-bottom:6px;}
+    nav.toc a{color:var(--text);text-decoration:none;}
+    nav.toc span.status{color:var(--accent);font-size:13px;margin-left:8px;}
+    article.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:22px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6);}
+    h2{color:var(--accent);margin-top:18px}
+    h3{margin-top:12px;color:#bfeadf}
+    .muted{color:var(--muted);font-size:14px}
+    .section{margin-top:14px}
+    .disclaimer{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;margin-top:12px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">MUN</div>
+      <div>
+        <h1>Whitepaper: Sieć monitorów i zdecentralizowany ekosystem taksówek</h1>
+        <p class="lead">Wersja 1.0 — Październik 2025 — Krótkie podsumowanie projektu i planu technicznego</p>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <strong>Spis treści</strong>
+      <ul>
+        <li><a href="#sec1">1. System reklamowy na monitorach w taksówkach</a> <span class="status">— Zrealizowano ✅</span></li>
+        <li><a href="#sec2">2. Zdecentralizowana aplikacja taksówkowa (Web3Taxi)</a> <span class="status">— W trakcie realizacji ⚙️</span></li>
+        <li><a href="#sec3">3. Sieć offline — Meshtastic (LoRa)</a> <span class="status">— Planowane 🔄</span></li>
+        <li><a href="#sec4">4. Wewnętrzny system płatności</a> <span class="status">— Planowane 🔄</span></li>
+        <li><a href="#concl">Zakończenie i zastrzeżenie</a></li>
+      </ul>
+    </nav>
+
+    <article class="card">
+      <section id="sec1" class="section">
+        <h2>1. Stworzenie systemu reklamowego na monitorach w taksówkach</h2>
+        <p class="muted">Status: Zrealizowano ✅</p>
+        <p>Wdrożyliśmy system cyfrowych monitorów (tabletów) w flotach taksówek. Urządzenia pełnią dwie główne funkcje:</p>
+        <ul>
+          <li><strong>Platforma reklamowa</strong> — wyświetlanie reklam i materiałów dopasowanych do lokalizacji, pory dnia i profilu pasażera.</li>
+          <li><strong>Podstawa technologiczna</strong> — tablety są również pełnoprawnymi węzłami obliczeniowymi (Android ARM), gotowymi w przyszłości do pracy w sieci rozproszonej.</li>
+        </ul>
+        <p>Obecnie operuje ponad <strong>200 aktywnych tabletów</strong>, które aktualizują treści i mogą służyć do zadań rozproszonych.</p>
+      </section>
+
+      <section id="sec2" class="section">
+        <h2>2. Zdecentralizowana aplikacja taksówkowa</h2>
+        <p class="muted">Status: W trakcie realizacji ⚙️</p>
+        <h3>Główna idea</h3>
+        <p>Zamiast jednego centralnego serwera tworzymy system, w którym obliczenia (match-making, obliczenie tras, filtrowanie kierowców) wykonują się na rozproszonych węzłach:</p>
+        <ul>
+          <li>tabletach reklamowych (zainstalowanych w samochodach),</li>
+          <li>stacjonarnych mini-serwerach (Raspberry Pi),</li>
+          <li>smartfonach kierowców i pasażerów.</li>
+        </ul>
+        <h3>Zasada działania (skrót)</h3>
+        <ol>
+          <li>Pasażer składa zamówienie w aplikacji.</li>
+          <li>Koordynator (lekki serwer) rozsyła zadanie do sieci P2P.</li>
+          <li>Najbliższe węzły obliczają optymalne trasy i dostępnych kierowców.</li>
+          <li>Wyniki trafiają bezpośrednio do pasażera; koordynator zapisuje jedynie kluczowe zdarzenia.</li>
+        </ol>
+        <h3>Warstwa technologiczna</h3>
+        <ul>
+          <li><strong>libp2p + WebRTC</strong> — komunikacja P2P między urządzeniami</li>
+          <li><strong>Redis / Gossip</strong> — synchronizacja stanu</li>
+          <li><strong>DID</strong> — zdecentralizowana identyfikacja uczestników</li>
+          <li><strong>Python / Go / React Native</strong> — implementacja węzłów i koordynatora</li>
+        </ul>
+        <div style="margin-top:12px;text-align:center;"><img src="screen.jpg" alt="screenshot" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.04)"></div>
+        <h3>Przykład efektywności (orientacyjny)</h3>
+        <p>Tradycyjny model wymaga serwerów o dużej mocy — np. 16 vCPU / 32 GB RAM dla 10 000 zleceń/dzień. Nasza sieć 200 tabletów, oddając po 10–15% mocy CPU, może zapewnić ~40 vCPU bez kosztów serwerowych. Oznacza to znaczną redukcję wydatków na infrastrukturę (orientacyjnie ~95% oszczędności kosztów obliczeniowych).</p>
+        <p class="disclaimer">Szacunki mają charakter orientacyjny i nie stanowią rekomendacji inwestycyjnej.</p>
+      </section>
+
+      <section id="sec3" class="section">
+        <h2>3. Sieć offline — Meshtastic (LoRa)</h2>
+        <p class="muted">Status: Planowane 🔄</p>
+        <h3>Co to jest Meshtastic</h3>
+        <p>Meshtastic to implementacja sieci typu <em>mesh</em> wykorzystująca technologie LoRa (nie mylić z LoRaWAN). Urządzenia mesh przekazują wiadomości między sobą, tworząc łańcuch komunikacyjny. Każdy węzeł przekazuje pakiety dalej, rozszerzając zasięg całej sieci.</p>
+        <h3>Kluczowe cechy</h3>
+        <ul>
+          <li>Każdy węzeł retransmituje pakiety, rozszerzając zasięg.</li>
+          <li>Zasięg jednego węzła: typowo 2–5 km w mieście, 10–15 km w otwartej przestrzeni.</li>
+          <li>Sieć sprawdza się przy krytycznej masie węzłów (np. kilkuset) — możliwe pełne pokrycie miejskie bez internetu.</li>
+        </ul>
+        <h3>Zalety</h3>
+        <ul>
+          <li>Możliwość działania w warunkach awaryjnych.</li>
+          <li>Brak opłat za transmisję mobilną.</li>
+          <li>Niskie zużycie energii dla urządzeń LoRa.</li>
+        </ul>
+        <p class="disclaimer">Obliczenia i założenia mają charakter orientacyjny i nie stanowią rekomendacji inwestycyjnej.</p>
+      </section>
+
+      <section id="sec4" class="section">
+        <h2>4. Wewnętrzny system płatności</h2>
+        <p class="muted">Status: Planowane 🔄</p>
+        <p>Plan wdrożenia wewnętrznej, tokenizowanej warstwy płatności obejmuje:</p>
+        <ul>
+          <li>Rozliczenia między kierowcami, pasażerami i reklamodawcami.</li>
+          <li>Płatności reklamy w tokenach (np. <code>MUN</code>).</li>
+          <li>Smart kontrakty automatyzujące wypłaty i rozliczenia.</li>
+          <li>Programy nagród za udostępnianie zasobów (np. moc obliczeniowa, retransmisja).</li>
+        </ul>
+        <p>Preferowane rozwiązania blockchain: <strong>Polygon</strong> lub <strong>Base</strong> ze względu na niskie opłaty i kompatybilność z dApps.</p>
+      </section>
+
+      <section id="concl" class="section">
+        <h2>Zakończenie</h2>
+        <p>Projekt ma na celu stworzenie nowego rodzaju infrastruktury miejskiej, w której ekrany reklamowe jednocześnie pełnią funkcję rozproszonych węzłów obliczeniowych. System zapewnia odporność na awarie sieci operatorów, redukcję kosztów infrastruktury oraz możliwość sprawiedliwego podziału przychodów pomiędzy uczestników.</p>
+        <div class="disclaimer">
+          <strong>Uwaga:</strong> Niniejszy dokument ma charakter informacyjny. Dane i obliczenia są szacunkowe i nie stanowią porady inwestycyjnej.
+        </div>
+      </section>
+    </article>
+  </div>
+</body>
+</html>
