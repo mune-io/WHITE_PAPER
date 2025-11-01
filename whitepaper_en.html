@@ -116,7 +116,7 @@
         <li><strong>Python / Go / React Native</strong> — node and coordinator implementation</li>
       </ul>
 
-      <img src="screenshot.jpg" alt="screenshot" class="screenshot">
+      <img src="screen.jpg" alt="screenshot" class="screenshot">
 
       <h3>Efficiency Example (Illustrative)</h3>
       <p>Traditional centralized servers for 10,000 rides/day may require <strong>16 vCPU / 32 GB RAM</strong>. Our network of 200 tablets, donating 10–15% CPU each, can provide ~40 vCPU without additional server costs. This leads to <strong>substantial infrastructure cost reduction (~95%)</strong>.</p>
@@ -131,24 +131,28 @@
     </div>
 
     <div class="card">
-      <h2>3. Offline Network — Meshtastic (LoRa)</h2>
+      <h2>3. Offline Network — Wi-Fi HaLow (802.11ah)</h2>
       <p class="status">Status: Planned 🔄</p>
-      <h3>What is Meshtastic?</h3>
-      <p>Meshtastic implements a <strong>mesh network</strong> using <strong>LoRa technology</strong> (not LoRaWAN). Devices relay messages to each other, forming a chain that extends the network coverage.</p>
 
-      <h3>Key Features</h3>
+      <h3>What is Wi-Fi HaLow?</h3>
+      <p>
+      Wi-Fi HaLow (IEEE 802.11ah) is a <strong>long-range, low-power Wi-Fi standard</strong> operating in the sub-1 GHz band.  
+      Unlike traditional 2.4 GHz or 5 GHz Wi-Fi, HaLow provides a <strong>wider coverage area</strong>—up to 1 km per node in urban environments—and can <strong>penetrate walls and obstacles</strong> much better due to its lower frequency.
+      </p>
+
+      <h3>Key Advantages</h3>
       <ul>
-        <li>Every node retransmits messages, extending coverage.</li>
-        <li>Typical range per node: 2–5 km in cities, 10–15 km in open areas.</li>
-        <li>Fully functional city-wide coverage possible with hundreds of nodes, <strong>without internet</strong>.</li>
+        <li><strong>High data throughput</strong> — from hundreds of kbit/s up to tens of Mbit/s, allowing transmission of larger data packets such as JSON messages, telemetry, images, or control signals.</li>
+        <li><strong>Wi-Fi-based protocol</strong> — supports standard IP networking, enabling seamless communication with tablets, phones, and IoT devices.</li>
+        <li><strong>Excellent wall penetration</strong> — sub-1 GHz signals travel farther and more reliably through buildings compared to regular Wi-Fi.</li>
+        <li><strong>Low power consumption</strong> — designed for IoT and mesh networks where devices operate for long periods on battery power.</li>
+        <li><strong>Offline mesh capability</strong> — devices can interconnect directly without Internet or cellular networks, forming an autonomous local network.</li>
       </ul>
 
-      <h3>Advantages</h3>
-      <ul>
-        <li>Operates in emergency conditions.</li>
-        <li>No mobile data costs.</li>
-        <li>Low energy consumption for LoRa devices.</li>
-      </ul>
+      <p>
+      Wi-Fi HaLow thus combines the best of both worlds: <strong>the reliability and IP-compatibility of Wi-Fi</strong> with the <strong>range and efficiency typical of LoRa-class networks</strong>, making it ideal for city-wide offline communication systems.
+      </p>
+
 
       <p><em>Note: Calculations are approximate and not investment advice.</em></p>
     </div>

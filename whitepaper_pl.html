@@ -113,22 +113,28 @@
       </section>
 
       <section id="sec3" class="section">
-        <h2>3. Sieć offline — Meshtastic (LoRa)</h2>
-        <p class="muted">Status: Planowane 🔄</p>
-        <h3>Co to jest Meshtastic</h3>
-        <p>Meshtastic to implementacja sieci typu <em>mesh</em> wykorzystująca technologie LoRa (nie mylić z LoRaWAN). Urządzenia mesh przekazują wiadomości między sobą, tworząc łańcuch komunikacyjny. Każdy węzeł przekazuje pakiety dalej, rozszerzając zasięg całej sieci.</p>
-        <h3>Kluczowe cechy</h3>
-        <ul>
-          <li>Każdy węzeł retransmituje pakiety, rozszerzając zasięg.</li>
-          <li>Zasięg jednego węzła: typowo 2–5 km w mieście, 10–15 km w otwartej przestrzeni.</li>
-          <li>Sieć sprawdza się przy krytycznej masie węzłów (np. kilkuset) — możliwe pełne pokrycie miejskie bez internetu.</li>
-        </ul>
-        <h3>Zalety</h3>
-        <ul>
-          <li>Możliwość działania w warunkach awaryjnych.</li>
-          <li>Brak opłat za transmisję mobilną.</li>
-          <li>Niskie zużycie energii dla urządzeń LoRa.</li>
-        </ul>
+        <h2>3. Sieć offline — Wi-Fi HaLow (802.11ah)</h2>
+<p class="status">Status: Planowane 🔄</p>
+
+<h3>Czym jest Wi-Fi HaLow?</h3>
+<p>
+Wi-Fi HaLow (IEEE 802.11ah) to <strong>energooszczędny standard Wi-Fi o dużym zasięgu</strong>, działający w paśmie poniżej 1 GHz.  
+W przeciwieństwie do tradycyjnego Wi-Fi 2.4 GHz lub 5 GHz, HaLow oferuje <strong>znacznie większy zasięg</strong> — do 1 km na jeden węzeł w środowisku miejskim — oraz <strong>lepszą penetrację ścian i przeszkód</strong> dzięki niższej częstotliwości pracy.
+</p>
+
+<h3>Główne zalety</h3>
+<ul>
+  <li><strong>Wysoka przepustowość</strong> — od kilkuset kbit/s do kilku Mbit/s, co umożliwia przesyłanie większych pakietów danych, takich jak wiadomości JSON, telemetria, obrazy czy sygnały sterujące.</li>
+  <li><strong>Architektura oparta na Wi-Fi</strong> — obsługuje standardową komunikację IP, co pozwala na łatwe łączenie z tabletami, smartfonami i urządzeniami IoT.</li>
+  <li><strong>Dobra przenikalność przez ściany</strong> — sygnały w paśmie sub-1 GHz znacznie lepiej przenikają przez budynki niż tradycyjne Wi-Fi.</li>
+  <li><strong>Niskie zużycie energii</strong> — zoptymalizowane pod kątem sieci IoT i mesh, w których urządzenia mogą działać przez długi czas na zasilaniu bateryjnym.</li>
+  <li><strong>Możliwość pracy offline w trybie mesh</strong> — urządzenia komunikują się bezpośrednio między sobą, bez potrzeby internetu czy sieci komórkowej, tworząc autonomiczną sieć lokalną.</li>
+</ul>
+
+<p>
+Wi-Fi HaLow łączy więc <strong>niezawodność i kompatybilność Wi-Fi</strong> z <strong>zasięgiem i efektywnością energetyczną charakterystyczną dla sieci klasy LoRa</strong>, co czyni go idealnym rozwiązaniem dla miejskich systemów komunikacji offline.
+</p>
+
         <p class="disclaimer">Obliczenia i założenia mają charakter orientacyjny i nie stanowią rekomendacji inwestycyjnej.</p>
       </section>
 
