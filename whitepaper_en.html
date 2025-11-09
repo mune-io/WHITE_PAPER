@@ -1,188 +1,529 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Whitepaper — Taxi Screens & Decentralized Taxi Ecosystem</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Whitepaper — Digital Screens Network & Decentralized Taxi Ecosystem</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#0a0e1a;
+      --card:#0f1420;
+      --accent:#6ee7b7;
+      --accent-dark:#059669;
+      --muted:#94a3b8;
+      --text:#f1f5f9;
+      --highlight:#fbbf24;
+      --maxw:1100px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+    *{box-sizing:border-box;}
+    html,body{height:100%;margin:0;}
+    body{
+      background:linear-gradient(135deg,#020617 0%, #0f172a 50%, #1e293b 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.7;
+      padding:48px 20px;
     }
-    h1, h2, h3, h4 {
-      color: #333;
+    .container{max-width:var(--maxw);margin:0 auto;width:100%;}
+    
+    /* Header */
+    header{
+      background:linear-gradient(135deg, rgba(14,165,233,0.1), rgba(110,231,183,0.1));
+      border:1px solid rgba(110,231,183,0.2);
+      padding:40px;
+      border-radius:16px;
+      margin-bottom:40px;
+      position:relative;
+      overflow:hidden;
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
+    header::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-20%;
+      width:400px;
+      height:400px;
+      background:radial-gradient(circle, rgba(110,231,183,0.15), transparent);
+      border-radius:50%;
     }
-    h2 {
-      margin-top: 30px;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
+    .header-content{position:relative;z-index:1;display:flex;align-items:center;gap:24px;}
+    .logo{
+      width:80px;
+      height:80px;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--accent),#10b981);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-size:28px;
+      color:#022;
+      box-shadow:0 10px 40px rgba(110,231,183,0.4);
     }
-    .card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    .header-text h1{
+      margin:0 0 8px 0;
+      font-size:32px;
+      font-weight:700;
+      background:linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
     }
-    .toc li {
-      margin-bottom: 8px;
+    .header-text .subtitle{
+      color:var(--muted);
+      font-size:16px;
+      margin:0;
     }
-    .whitepaper-links a {
-      display: block;
-      background: #3366cc;
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 6px;
-      text-decoration: none;
-      margin: 5px 0;
-      text-align: center;
+    .version-badge{
+      display:inline-block;
+      background:rgba(110,231,183,0.15);
+      color:var(--accent);
+      padding:4px 12px;
+      border-radius:20px;
+      font-size:13px;
+      font-weight:600;
+      margin-top:8px;
     }
-    .screenshot {
-      width: 100%;
-      max-width: 600px;
-      margin: 15px 0;
+    
+    /* Navigation */
+    nav.toc{
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.08);
+      padding:24px;
+      border-radius:12px;
+      margin-bottom:32px;
     }
-    .status {
-      font-weight: bold;
-      margin-bottom: 15px;
+    nav.toc h3{
+      margin:0 0 16px 0;
+      color:var(--accent);
+      font-size:18px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    nav.toc h3::before{content:'📋';font-size:20px;}
+    nav.toc ul{margin:0;padding:0;list-style:none;}
+    nav.toc li{
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+    nav.toc li:last-child{border:none;}
+    nav.toc a{
+      color:var(--text);
+      text-decoration:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      transition:color 0.2s;
+    }
+    nav.toc a:hover{color:var(--accent);}
+    .status{
+      font-size:12px;
+      padding:4px 10px;
+      border-radius:12px;
+      font-weight:600;
+    }
+    .status.done{background:rgba(34,197,94,0.2);color:#4ade80;}
+    .status.progress{background:rgba(251,191,36,0.2);color:var(--highlight);}
+    .status.planned{background:rgba(59,130,246,0.2);color:#60a5fa;}
+    
+    /* Cards */
+    .card{
+      background:linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.08);
+      padding:32px;
+      border-radius:16px;
+      margin-bottom:24px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.4);
+    }
+    
+    /* Typography */
+    h2{
+      color:var(--accent);
+      font-size:28px;
+      margin:0 0 16px 0;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    h3{
+      color:#bfeadf;
+      font-size:20px;
+      margin:24px 0 12px 0;
+    }
+    
+    /* Feature boxes */
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+      margin:24px 0;
+    }
+    .feature-box{
+      background:rgba(110,231,183,0.05);
+      border:1px solid rgba(110,231,183,0.15);
+      padding:20px;
+      border-radius:12px;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-box:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(110,231,183,0.2);
+    }
+    .feature-box h4{
+      color:var(--accent);
+      margin:0 0 8px 0;
+      font-size:16px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .feature-box p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    
+    /* Stats */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+      gap:16px;
+      margin:24px 0;
+    }
+    .stat-box{
+      background:linear-gradient(135deg, rgba(110,231,183,0.1), rgba(14,165,233,0.1));
+      padding:20px;
+      border-radius:12px;
+      text-align:center;
+      border:1px solid rgba(110,231,183,0.2);
+    }
+    .stat-value{
+      font-size:32px;
+      font-weight:700;
+      color:var(--accent);
+      margin:0;
+    }
+    .stat-label{
+      font-size:13px;
+      color:var(--muted);
+      margin:4px 0 0 0;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    
+    /* Lists */
+    ul{line-height:1.8;}
+    ul li{margin-bottom:8px;}
+    ul li strong{color:var(--accent);}
+    
+    /* Code */
+    code{
+      background:rgba(110,231,183,0.1);
+      padding:2px 6px;
+      border-radius:4px;
+      color:var(--accent);
+      font-size:14px;
+    }
+    
+    /* Disclaimer */
+    .disclaimer{
+      background:rgba(251,191,36,0.1);
+      border-left:4px solid var(--highlight);
+      padding:16px;
+      border-radius:8px;
+      margin:24px 0;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .disclaimer strong{color:var(--highlight);}
+    
+    /* Image */
+    img{
+      max-width:100%;
+      border-radius:12px;
+      margin:24px 0;
+      box-shadow:0 8px 32px rgba(0,0,0,0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content{flex-direction:column;text-align:center;}
+      .header-text h1{font-size:24px;}
+      h2{font-size:22px;}
+      .stats{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Whitepaper: Taxi Advertising Screens & Decentralized Taxi Ecosystem</h1>
-    <p><strong>Version 1.0 — October 2025</strong> — Brief project overview and technical roadmap</p>
+    
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <div class="logo">MUN</div>
+        <div class="header-text">
+          <h1>Whitepaper: Digital Screens Network & Decentralized Taxi Ecosystem</h1>
+          <p class="subtitle">Version 1.0 — October 2025 — Project Summary and Technical Plan</p>
+          <span class="version-badge">Version 1.0</span>
+        </div>
+      </div>
+    </header>
 
-    <h2>Table of Contents</h2>
-    <ul class="toc">
-      <li>1. Taxi Advertising Screens — Implemented ✅</li>
-      <li>2. Decentralized Taxi Application (Web3Taxi) — In Progress ⚙️</li>
-      <li>3. Offline Network —Wi-Fi HaLow (IEEE 802.11ah) — Planned 🔄</li>
-      <li>4. Internal Payment System — Planned 🔄</li>
-      <li>Conclusion & Disclaimer</li>
-    </ul>
-
-    <div class="card">
-  <h2>1. Taxi Advertising Screens</h2>
-  <p class="status">Status: Implemented ✅</p>
-  <p>We have deployed a network of digital advertising screens across taxi fleets. The devices serve several key purposes:</p>
-  <ul>
-    <li><strong>Advertising platform</strong> — displaying targeted ads and content based on location, time of day, and passenger profile.</li>
-    <li><strong>Technological backbone</strong> — tablets act as fully functional computing nodes (Android ARM), capable of future integration into a decentralized network.</li>
-    <li><strong>Local Face Recognition</strong> — a neural network running entirely on the tablet detects passenger attention and counts ad views. No personal data leaves the device, ensuring compliance with <strong>RODO/GDPR</strong>.</li>
-    <li><strong>Data privacy</strong> — all processing is local; only anonymized statistics (ad view counts, engagement metrics) are sent to the server.</li>
-  </ul>
-  <p>This system allows both monetization through ads and preparation for a scalable Web3Taxi ecosystem, with full respect for user privacy.</p>
-</div>
-
-
-    <div class="card">
-      <h2>2. Decentralized Taxi Application</h2>
-      <p class="status">Status: In Progress ⚙️</p>
-      <h3>Core Idea</h3>
-      <p>Instead of a single centralized server, we are building a system where computation (ride-matching, route calculation, driver filtering) is performed on <strong>distributed nodes</strong>:</p>
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <h3>Table of Contents</h3>
       <ul>
-        <li>Advertising tablets in taxis,</li>
-        <li>Stationary mini-servers (Raspberry Pi),</li>
-        <li>Smartphones of drivers and passengers.</li>
+        <li>
+          <a href="#sec1">
+            <span>1. In-Taxi Digital Advertising Screens</span>
+            <span class="status done">✅ Implemented</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec2">
+            <span>2. Decentralized Taxi Application (Web3Taxi)</span>
+            <span class="status progress">⚙️ In Progress</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec3">
+            <span>3. Internal Payment System</span>
+            <span class="status planned">🔄 Planned</span>
+          </a>
+        </li>
+        <li>
+          <a href="#concl">
+            <span>4. Conclusion & Disclaimer</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Section 1: Advertising Screens -->
+    <div class="card" id="sec1">
+      <h2>🖥️ 1. In-Taxi Digital Advertising Screens</h2>
+      <p class="status done">Status: Implemented ✅</p>
+      
+      <p>We've deployed a network of digital advertising screens across taxi fleets. These devices serve multiple key functions:</p>
+
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>📱 Advertising Platform</h4>
+          <p>Display personalized ads and content based on location, time of day, and passenger profile</p>
+        </div>
+        <div class="feature-box">
+          <h4>⚙️ Technical Foundation</h4>
+          <p>Tablets function as fully operational computing nodes (Android ARM), ready for future integration with decentralized network</p>
+        </div>
+        <div class="feature-box">
+          <h4>🤖 Local Face Recognition</h4>
+          <p>Neural network running entirely on-device detects passenger attention and counts ad impressions</p>
+        </div>
+        <div class="feature-box">
+          <h4>🔒 Data Privacy</h4>
+          <p>All processing occurs locally; only anonymized statistics sent to server. GDPR/RODO compliant</p>
+        </div>
+      </div>
+
+      <h3>🎯 Tool for Personalizing Communication</h3>
+      <p>The system enables both ad monetization and preparation for a scalable Web3Taxi ecosystem, with full respect for user privacy. We personalize ads on three levels:</p>
+      
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>⚡ Real-time Detection</h4>
+          <p>Gender/age recognition via neural network (GDPR-compliant, no biometric data storage)</p>
+        </div>
+        <div class="feature-box">
+          <h4>🚕 Taxi API Integration</h4>
+          <p>Integration with Uber/Bolt/Freenow — access to passenger name and frequent routes</p>
+        </div>
+        <div class="feature-box">
+          <h4>🎯 Contextual Targeting</h4>
+          <p>Targeted advertising based on demographics + travel context in real-time</p>
+        </div>
+      </div>
+
+      <p><strong>End Result:</strong> This isn't just "displaying ads" but true dialogue — the screen communicates visually with passengers, the taxi app delivers personalized offers, with interaction capabilities (QR codes, push notifications).</p>
+
+      <h3>📊 Recording Analysis & Data Analytics</h3>
+      <p>We analyze performance while maintaining the highest privacy standards:</p>
+      
+      <ul>
+        <li><strong>Ad Performance Metrics</strong> — views, engagement, viewing time, conversion</li>
+        <li><strong>Demographic Patterns</strong> — age/gender distribution by time and route (anonymized)</li>
+        <li><strong>Route Data Optimization</strong> — optimal ad placement based on travel patterns</li>
+        <li><strong>Passenger Route Patterns</strong> — statistics: which age groups/gender travel at what times</li>
+        <li><strong>Compliance & Privacy</strong> — all data anonymized (GDPR/RODO compliant), no facial images stored, only metadata</li>
       </ul>
 
-      <h3>Workflow Overview</h3>
-      <ol>
-        <li>Passenger places a ride request in the app.</li>
-        <li>A lightweight <strong>Coordinator Server</strong> broadcasts the task to the P2P network.</li>
-        <li>Nearby nodes calculate optimal routes and available drivers.</li>
-        <li>Results are sent directly to the passenger; the Coordinator only logs key events.</li>
+      <div class="stats">
+        <div class="stat-box">
+          <p class="stat-value">100%</p>
+          <p class="stat-label">Local Processing</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value">0</p>
+          <p class="stat-label">Personal Data Sent</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value">3-Level</p>
+          <p class="stat-label">Personalization</p>
+        </div>
+      </div>
+
+      <p class="disclaimer"><strong>Key Advantage:</strong> We connect the physical world (in-taxi screens) with digital (app + API), creating omnichannel personalized communication that accounts for travel context in real-time.</p>
+    </div>
+
+    <!-- Section 2: Decentralized App -->
+    <div class="card" id="sec2">
+      <h2>🚖 2. Decentralized Taxi Application</h2>
+      <p class="status progress">Status: In Progress ⚙️</p>
+
+      <h3>Core Concept</h3>
+      <p>Instead of a single central server, we're building a system where computations (match-making, route calculation, driver filtering) are executed on distributed nodes:</p>
+      
+      <ul>
+        <li><strong>Advertising tablets</strong> (installed in vehicles)</li>
+        <li><strong>Stationary mini-servers</strong></li>
+        <li><strong>Driver and passenger smartphones</strong></li>
+      </ul>
+
+      <h3>How It Works</h3>
+      <ol style="line-height:2;">
+        <li><strong>Passenger places order</strong> in the app</li>
+        <li><strong>Coordinator</strong> (lightweight server) distributes task to P2P network</li>
+        <li><strong>Nearest nodes compute</strong> optimal routes and available drivers</li>
+        <li><strong>Results sent directly</strong> to passenger; coordinator logs only key events</li>
       </ol>
 
-      <h3>Technical Stack</h3>
-      <ul>
-        <li><strong>libp2p + WebRTC</strong> — P2P device communication</li>
-        <li><strong>Redis / Gossip protocol</strong> — distributed state synchronization</li>
-        <li><strong>DID (Decentralized IDs)</strong> — identity management</li>
-        <li><strong>Python / Go / React Native</strong> — node and coordinator implementation</li>
-      </ul>
+      <h3>Technology Layer</h3>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>🔗 libp2p + WebRTC</h4>
+          <p>P2P communication between devices</p>
+        </div>
+        <div class="feature-box">
+          <h4>🔄 Redis / Gossip</h4>
+          <p>State synchronization</p>
+        </div>
+        <div class="feature-box">
+          <h4>🆔 DID</h4>
+          <p>Decentralized participant identification</p>
+        </div>
+        <div class="feature-box">
+          <h4>⚙️ Python / Go / React Native</h4>
+          <p>Node and coordinator implementation</p>
+        </div>
+      </div>
 
-      <img src="screen.jpg" alt="screenshot" class="screenshot">
+      <div style="margin-top:24px;text-align:center;">
+        <img src="screen.jpg" alt="System Architecture" style="max-width:800px;">
+      </div>
 
-      <h3>Efficiency Example (Illustrative)</h3>
-      <p>Traditional centralized servers for 10,000 rides/day may require <strong>16 vCPU / 32 GB RAM</strong>. Our network of 200 tablets, donating 10–15% CPU each, can provide ~40 vCPU without additional server costs. This leads to <strong>substantial infrastructure cost reduction (~95%)</strong>.</p>
-      <p><em>Note: Estimates are illustrative and not investment advice.</em></p>
+      <h3>💰 Efficiency Example (Estimated)</h3>
+      <div class="stats">
+        <div class="stat-box">
+          <p class="stat-value">~95%</p>
+          <p class="stat-label">Cost Reduction</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value">200+</p>
+          <p class="stat-label">Distributed Nodes</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value">~40 vCPU</p>
+          <p class="stat-label">Combined Power</p>
+        </div>
+      </div>
 
-      <h3>Additional Notes</h3>
-      <ul>
-        <li>Nodes update location every 2–3 minutes to keep ride-matching accurate.</li>
-        <li>Passengers and drivers communicate P2P after ride confirmation, minimizing server load.</li>
-        <li>Coordinator only handles essential events (ride acceptance, cancellation, arrival, completion).</li>
-      </ul>
+      <p>Traditional model requires powerful servers — e.g., 16 vCPU / 32 GB RAM for 10,000 orders/day. Our network of 200 tablets, each contributing 10-15% CPU power, can provide ~40 vCPU equivalent without server costs. This represents significant infrastructure cost reduction (approximately ~95% computational cost savings).</p>
+
+      <div class="disclaimer">
+        <strong>Note:</strong> These estimates are approximate and do not constitute investment advice.
+      </div>
     </div>
 
-    <div class="card">
-      <h2>3. Offline Network — Wi-Fi HaLow (802.11ah)</h2>
-      <p class="status">Status: Planned 🔄</p>
+    <!-- Section 3: Payment System -->
+    <div class="card" id="sec3">
+      <h2>💳 3. Internal Payment System</h2>
+      <p class="status planned">Status: Planned 🔄</p>
 
-      <h3>What is Wi-Fi HaLow?</h3>
-      <p>
-      Wi-Fi HaLow (IEEE 802.11ah) is a <strong>long-range, low-power Wi-Fi standard</strong> operating in the sub-1 GHz band.  
-      Unlike traditional 2.4 GHz or 5 GHz Wi-Fi, HaLow provides a <strong>wider coverage area</strong>—up to 1 km per node in urban environments—and can <strong>penetrate walls and obstacles</strong> much better due to its lower frequency.
-      </p>
+      <h3>🏦 Customer Support in Setting Up Financial Access</h3>
+      <p>We're developing an <strong>internal ecosystem token</strong> with seamless onboarding:</p>
 
-      <h3>Key Advantages</h3>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>⚡ Automatic Account Creation</h4>
+          <p>Just use our taxi service once — get your wallet automatically</p>
+        </div>
+        <div class="feature-box">
+          <h4>🏦 Banking Gateways</h4>
+          <p>Seamless connection to traditional banking systems</p>
+        </div>
+        <div class="feature-box">
+          <h4>🎯 Zero Friction Onboarding</h4>
+          <p>Your taxi account = Your financial account</p>
+        </div>
+        <div class="feature-box">
+          <h4>📱 Integrated Support</h4>
+          <p>Support built into the taxi app interface</p>
+        </div>
+      </div>
+
+      <p><strong>Result:</strong> Simplified financial access with zero friction — no separate bank registration needed.</p>
+
+      <h3>Implementation Plan</h3>
+      <p>The internal, tokenized payment layer implementation plan includes:</p>
+      
       <ul>
-        <li><strong>High data throughput</strong> — from hundreds of kbit/s up to tens of Mbit/s, allowing transmission of larger data packets such as JSON messages, telemetry, images, or control signals.</li>
-        <li><strong>Wi-Fi-based protocol</strong> — supports standard IP networking, enabling seamless communication with tablets, phones, and IoT devices.</li>
-        <li><strong>Excellent wall penetration</strong> — sub-1 GHz signals travel farther and more reliably through buildings compared to regular Wi-Fi.</li>
-        <li><strong>Low power consumption</strong> — designed for IoT and mesh networks where devices operate for long periods on battery power.</li>
-        <li><strong>Offline mesh capability</strong> — devices can interconnect directly without Internet or cellular networks, forming an autonomous local network.</li>
+        <li><strong>Settlements</strong> — between drivers, passengers, and advertisers</li>
+        <li><strong>Ad payments in tokens</strong> — e.g., <code>MUN</code></li>
+        <li><strong>Smart contracts</strong> — automating payouts and settlements</li>
+        <li><strong>Reward programs</strong> — for resource sharing (e.g., computing power, relay)</li>
       </ul>
 
-      <p>
-      Wi-Fi HaLow thus combines the best of both worlds: <strong>the reliability and IP-compatibility of Wi-Fi</strong> with the <strong>range and efficiency typical of LoRa-class networks</strong>, making it ideal for city-wide offline communication systems.
-      </p>
+      <h3>Blockchain Platform</h3>
+      <p>Preferred solutions: <strong>Polygon</strong> or <strong>Base</strong> due to low transaction fees and dApp compatibility.</p>
 
-
-      <p><em>Note: Calculations are approximate and not investment advice.</em></p>
+      <div class="stats">
+        <div class="stat-box">
+          <p class="stat-value">&lt;$0.01</p>
+          <p class="stat-label">Transaction Cost</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value">Instant</p>
+          <p class="stat-label">Settlement</p>
+        </div>
+        <div class="stat-box">
+          <p class="stat-value">100%</p>
+          <p class="stat-label">Transparent</p>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>4. Internal Payment System</h2>
-      <p class="status">Status: Planned 🔄</p>
-      <p>The plan for an internal tokenized payment layer includes:</p>
+    <!-- Conclusion -->
+    <div class="card" id="concl">
+      <h2>🎯 4. Conclusion</h2>
+      
+      <p>The project aims to create a new type of urban infrastructure where advertising screens simultaneously function as distributed computing nodes. The system ensures:</p>
+
       <ul>
-        <li>Settlements between drivers, passengers, and advertisers.</li>
-        <li>Advertisement payments via tokens (e.g., MUN).</li>
-        <li>Smart contracts for automated payouts and accounting.</li>
-        <li>Reward programs for resource sharing (computing power, message relays).</li>
+        <li>✅ <strong>Network resilience</strong> — operates independently of carrier outages</li>
+        <li>✅ <strong>Infrastructure cost reduction</strong> — ~95% savings on computational resources</li>
+        <li>✅ <strong>Fair revenue distribution</strong> — among all ecosystem participants</li>
+        <li>✅ <strong>Privacy compliance</strong> — GDPR/RODO compliant from day one</li>
+        <li>✅ <strong>Seamless user experience</strong> — financial onboarding without barriers</li>
       </ul>
-      <p><strong>Preferred blockchain solutions:</strong> Polygon or Base, for low fees and dApp compatibility.</p>
-    </div>
 
-    <div class="card">
-      <h2>Conclusion</h2>
-      <p>This project aims to create a <strong>new type of urban infrastructure</strong>, where advertising screens also serve as distributed computing nodes.</p>
-      <ul>
-        <li>Network resilience independent of mobile operators</li>
-        <li>Reduced infrastructure costs</li>
-        <li>Fair revenue distribution among participants</li>
-      </ul>
-      <p><strong>Disclaimer:</strong> This document is for informational purposes. Data and calculations are estimates and do not constitute investment advice.</p>
-    </div>
+      <h3>Vision</h3>
+      <p>We're building more than just a taxi app or advertising network — we're creating a <strong>decentralized urban mobility ecosystem</strong> that empowers drivers, better serves passengers, and respects user privacy while delivering targeted, relevant advertising.</p>
 
-    <div class="card whitepaper-links">
-     
+      <div class="disclaimer">
+        <strong>Legal Disclaimer:</strong> This document is for informational purposes only. Data and calculations are estimates and do not constitute investment advice. Past performance does not guarantee future results. The project timeline and features are subject to change based on technical, regulatory, and market conditions.
+      </div>
     </div>
 
   </div>
